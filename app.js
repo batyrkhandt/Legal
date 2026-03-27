@@ -458,7 +458,8 @@ function rF(){
     <div class="card" style="border-top:3px solid var(--gold)"><div class="clbl">Мои опер. расходы</div><div class="cval c-go">${fm(totalOpEx*fp)}</div><div class="csub">${opexPct}% от выручки</div></div>`;
 
   // 3. Plan vs Fact
-  const planFp=planTotal*fp,factFp=totalIncome*fp,diff=factFp-planFp;
+  const planShare=selFounder==='both'?1:0.5;
+  const planFp=planTotal*planShare,factFp=totalIncome*planShare,diff=factFp-planFp;
   const pct=planFp>0?Math.min((factFp/planFp*100),200).toFixed(0):null;
   const remain=Math.max(planFp-factFp,0),planDone=planFp>0&&factFp>=planFp;
   document.getElementById('f-plan').innerHTML=`
